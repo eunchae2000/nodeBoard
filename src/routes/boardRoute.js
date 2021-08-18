@@ -20,9 +20,13 @@ router.get('/list', BoardController.BoardList)
 /* 게시글 상세 보기 */
 router.get("/:boardId", BoardController.showBoard)
 /* 게시글 작성 */
-router.post('/write', BoardController.insertBoard)
+router.post('/board/write', BoardController.insertBoard)
+/* 게시글 작성 페이지 */
+router.get('/board/write', BoardController.createBoard)
 /* 게시글 수정 */
 router.patch('/:boardId', BoardController.updateBoard)
+/* 게시글 수정 페이지 */
+router.get('/:boardId', BoardController.patchBoard)
 /* 게시글 삭제 */
 router.delete('/:boardId', BoardController.deleteBoard)
 

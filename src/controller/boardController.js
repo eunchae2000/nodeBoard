@@ -1,12 +1,16 @@
+const winston = require('winston');
+const router = require('../routes/boardRoute');
 const boardService = require('../services/boardService');
+
+const logger = winston.createLogger();
 
 /* 1. 게시글 목록 보기 */
 exports.BoardList = async(req, res, next) => {
     try{
         let list = await boardService.BoardList();
-        console.log(list);
         return res.render('boardlist',{title:'boardList', list:list});
     }catch(err){
+        logger.info(err);
         return res.status(500).json(err)
     }
 }
@@ -26,8 +30,17 @@ exports.showBoard = async(req, res, next) => {
 exports.insertBoard = async(req, res, next) => {
     let {board_title, board_content, board_writer} = req.params;
     try{
-        let create = await boardService.insertBoard(board_title, board_content, board_writer);
-        return res.status(200).json(create[0])
+        await boardService.insertBoard(board_title, board_content, board_writer);
+        return res.redirect('/write');
+    }catch(err){
+        return res.status(500).json(err)
+    }
+}
+
+/* 게시글 생성 페이지 */
+exports.createBoard = async(req, res, next) => {
+    try{
+        return res.render('boardNew');
     }catch(err){
         return res.status(500).json(err)
     }
@@ -35,10 +48,22 @@ exports.insertBoard = async(req, res, next) => {
 
 /* 4. 작성한 게시글 수정 */
 exports.updateBoard = async(req, res, next) => {
-    let {board_title, board_content} = req.params;
+    let {board_title, board_writer, board_content} = req.body;
+    let {board_uid} = req.params;
     try{
-        let update = await boardService.updateBoard(board_title, board_content);
-        return res.status(200).json(update[0])
+        await boardService.updateBoard(board_title, board_writer, board_content, board_uid);
+        res.redirect('/update')
+    }catch(err){
+        return res.status(500).json(err)
+    }
+}
+
+// 게시글 수정 페이지
+exports.patchBoard = async(req, res, next) => {
+    let {board_uid} = req.params;
+    try{
+        await boardService.
+        res.render('boardUpdate');
     }catch(err){
         return res.status(500).json(err)
     }
