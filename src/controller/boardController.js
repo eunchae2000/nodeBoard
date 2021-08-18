@@ -1,24 +1,22 @@
 const boardService = require('../services/boardService');
 
 /* 1. 게시글 목록 보기 */
-// router.get('/', function(req, res, next){
-//     res.redirect('/board/list');
-// })
 exports.BoardList = async(req, res, next) => {
     try{
         let list = await boardService.BoardList();
-        return res.render('boardlist',{list:list})
+        console.log(list);
+        return res.render('boardlist',{title:'boardList', list:list});
     }catch(err){
         return res.status(500).json(err)
     }
 }
-
+ 
 /* 2. 선택한 게시글 상세 보기 */
 exports.showBoard = async(req, res, next) => {
     let {board_title} = req.params;
     try{
-        let rows = await boardService.showBoard(board_title);
-        return res.json(rows[0])
+        let detail = await boardService.showBoard(board_title);
+        return res.json(detail[0])
     }catch(err){
         return res.status(500).json(err)
     }
@@ -28,8 +26,8 @@ exports.showBoard = async(req, res, next) => {
 exports.insertBoard = async(req, res, next) => {
     let {board_title, board_content, board_writer} = req.params;
     try{
-        let rows = await boardService.insertBoard(board_title, board_content, board_writer);
-        return res.status(200).json(rows[0])
+        let create = await boardService.insertBoard(board_title, board_content, board_writer);
+        return res.status(200).json(create[0])
     }catch(err){
         return res.status(500).json(err)
     }
@@ -39,8 +37,8 @@ exports.insertBoard = async(req, res, next) => {
 exports.updateBoard = async(req, res, next) => {
     let {board_title, board_content} = req.params;
     try{
-        let rows = await boardService.updateBoard(board_title, board_content);
-        return res.status(200).json(rows[0])
+        let update = await boardService.updateBoard(board_title, board_content);
+        return res.status(200).json(update[0])
     }catch(err){
         return res.status(500).json(err)
     }
@@ -50,10 +48,9 @@ exports.updateBoard = async(req, res, next) => {
 exports.deleteBoard = async(req, res, next) => {
     let {board_uid, board_title, board_writer, board_content} = req.params;
     try{
-        let rows = await boardService.deleteBoard(board_uid, board_title, board_writer, board_content);
-        return res.status(200).json(rows[0])
+        let del = await boardService.deleteBoard(board_uid, board_title, board_writer, board_content);
+        return res.status(200).json(del[0])
     }catch(err){
         return res.status(500).json(err)
     }
-
 }

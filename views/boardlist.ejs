@@ -13,13 +13,11 @@
 <body>
     <h1>게시글 목록</h1>
     <table border="1">
-        <thead>
-            <tr>
-                <td>번호</td>
-                <td>제목</td>
-                <td>글쓴이</td>
-            </tr>
-        </thead>
+        <tr>
+            <td>번호</td>
+            <td>제목</td>
+            <td>작성자</td>
+        </tr>
         <% for(var i=0; i<list.length; i++) { %>
             <tr>
                 <td><%=list[i].board_uid%></td>

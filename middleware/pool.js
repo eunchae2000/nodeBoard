@@ -1,7 +1,7 @@
 // TODO: DB와 연결하여 글 목록을 보여주기
 
 const mysql = require('mysql2/promise');
-const pool = mysql.createConnection({
+const pool = mysql.createPool({
     host : '127.0.0.1',
     user : 'root',
     port: 3306,

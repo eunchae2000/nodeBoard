@@ -13,6 +13,8 @@ var BoardController = require('../controller/boardController');
 1. DB에서 데이터를 가져와야함
 2. 글번호, 제목, 글작성자를 표시해줘야됨*/
 
+/* 게시글 메인 화면 */
+
 /* 게시글 목록 표시 */
 router.get('/list', BoardController.BoardList)
 /* 게시글 상세 보기 */
