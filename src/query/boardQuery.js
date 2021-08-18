@@ -1,0 +1,5 @@
+exports.getBoard = 'select board_uid, board_title, board_writer from boardDb where board_uid = ?'
+exports.showBoard = 'select board_uid, boatd_title, board_writer, board_content from boardDb where board_uid = ?'
+exports.insertBoard = 'insert into boardDb(board_title, board_writer, board_content) values(?, ?, ?, now())'
+exports.updateBoard = 'update boardDb set board_title = ?, board_content = ? where board_uid = ?'
+exports.deleteBoard = 'delete from boardDb where board_uid = ?'
