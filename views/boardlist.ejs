@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href="/stylesheets/style.css">
+    <title>BoardList</title>
+</head>
+<body>
+    <h1>게시글 목록</h1>
+    <table border="1">
+        <tr>
+            <td>번호</td>
+            <td>제목</td>
+            <td>작성자</td>
+        </tr>
+        <%=
+        for(var i-0; i<rows.length; i++)
+        {
+            var data = rows[i];
+        }
+        %>
+    <tr>
+        <td><%=data.idx%></td>
+        <td><%=data.name%></td>
+        <td><a href="/board/list/<%=data.idx%>"><%=data.title%></a></td>
+    </tr>
+</table>
+<button type="button" class="btnCreate" style="margin-right: 2%;">글 작성하기</button>
+</body>
+</html>

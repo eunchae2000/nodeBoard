@@ -1,0 +1,32 @@
+<!-- board에서 글 작성하기 버튼을 클릭하면 게시글을 작성하는 페이지로 넘어가는 화면 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href="/stylesheets/style.css">
+    <title>WRITE</title>
+</head>
+<body>
+    <h1>게시글 작성하기</h1>
+    <form action="/write" method="post">
+        <table border="1">
+            <tr>
+                <td style="font-size: 20px;">제목: <input type="text" name="title" id="title" style="width: 400px;height: 20px;">
+                    작성자: <input type="text" name="name" name="name" style="width: 80px; height: 20px;"></td>
+            </tr>
+            <tr>
+                <td>
+                    <textarea name="content" id="content" cols="160" rows="30" placeholder="글 내용을 입력하세요."></textarea>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <div style="width: 50dp; float:right;">
+            <button type="submit" style="width: 80pt; height: 40pt;">완료</button>
+        </div>
+    </form>
+</body>
+</html>

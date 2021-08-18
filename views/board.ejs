@@ -1,0 +1,28 @@
+<!-- 게시판 전체 목록을 보여주는 파일 -->
+<!-- DB와 연결하여 저장되어 있던 내용 보여주기
+1. 글번호와 목록을 for문을 돌려서 나타내기 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href="/stylesheets/style.css">
+    <title>BOARD</title>
+</head>
+<body>
+    <script src="/javascripts/board.js"></script>
+    <h2>게시글 목록</h2>
+    <table border="1">
+        <colgroup>
+            <col width='60'><col width='200'><col width='100'>
+        </colgroup>
+        <tr>
+            <th>글 번호</th>
+            <th>글 제목</th>
+            <th>작성자</th>
+        </tr>
+    </table>
+    <button type="button" class="btnCreate" style="margin-right: 2%;">글 작성하기</button>
+</body>
+</html>
