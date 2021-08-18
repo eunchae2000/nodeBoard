@@ -1,11 +1,11 @@
 const boardQuery = require('../query/boardQuery')
-const pool = require('../middleware/pool')
+const pool = require('/Users/coco/DEV/nodeBoard/middleware/pool.js');
 
 // 게시글 목록 보여주기
-exports.getBoard = async(board_uid) => {
+exports.BoardList = async() => {
     try{
-        let data = await pool.query(boardQuery.getBoard, [board_uid]);
-        return data[0]
+        let list = await pool.query(boardQuery.BoardList);
+        return list[0]
     }catch (err){
         console.log(err);
         throw Error(err);
@@ -13,6 +13,15 @@ exports.getBoard = async(board_uid) => {
 }
 
 // 게시판의 글을 상세보기 가능
+exports.showBoard = async(board_title) =>{
+    try{
+        let rows = await pool.query(boardQuery.showBoard, [board_title]);
+        return rows[0]
+    }catch(err){
+        console.log(err);
+        throw Error(err);
+    }
+}
 
 // 새로운 게시글 작성
 exports.insertBoard = async(board_title, board_content, board_writer) => {
