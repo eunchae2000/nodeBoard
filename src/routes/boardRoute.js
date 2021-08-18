@@ -24,10 +24,10 @@ router.post('/board/write', BoardController.insertBoard)
 /* 게시글 작성 페이지 */
 router.get('/board/write', BoardController.createBoard)
 /* 게시글 수정 */
-router.patch('/:boardId', BoardController.updateBoard)
+router.patch('/update', BoardController.updateBoard)
 /* 게시글 수정 페이지 */
-router.get('/:boardId', BoardController.patchBoard)
+router.get('/:board_uid', BoardController.patchBoard)
 /* 게시글 삭제 */
-router.delete('/:boardId', BoardController.deleteBoard)
+router.delete('/delete', BoardController.deleteBoard)
 
 module.exports = router;

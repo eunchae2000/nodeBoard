@@ -46,7 +46,6 @@ exports.updateBoard = async(board_title,board_content) => {
     }
 }
 
-// exports.createBoard =
 // 기존 게시글 삭제
 exports.deleteBoard = async(board_uid) => {
     try{
