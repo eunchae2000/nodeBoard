@@ -4,11 +4,10 @@ const boardService = require('../services/boardService');
 // router.get('/', function(req, res, next){
 //     res.redirect('/board/list');
 // })
-exports.getBoard = async(req, res, next) => {
-    let {board_uid} = req.params;
+exports.BoardList = async(req, res, next) => {
     try{
-        let rows = await boardService.getBoard(board_uid);
-        return res.json(rows[0])
+        let list = await boardService.BoardList();
+        return res.render('boardlist',{list:list})
     }catch(err){
         return res.status(500).json(err)
     }

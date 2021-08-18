@@ -14,6 +14,7 @@ router.get('/board', function(req, res, next) {
 // 게시판 글 작성하는 화면
 router.get('/write', function(req, res, next) {
   res.render('boardNew', { title: '게시판 글 쓰기' });
+  res.redirect('/board/list');
 });
 
 // 게시판 글 목록을 보여주는 화면
