@@ -16,18 +16,18 @@ var BoardController = require('../controller/boardController');
 /* 게시글 메인 화면 */
 
 /* 게시글 목록 표시 */
-router.get('/list', BoardController.BoardList)
+router.get('/board/list', BoardController.BoardList)
 /* 게시글 상세 보기 */
-router.get("/:boardId", BoardController.showBoard)
+router.get("/board/read/:board_uid", BoardController.showBoard)
 /* 게시글 작성 */
 router.post('/board/write', BoardController.insertBoard)
 /* 게시글 작성 페이지 */
 router.get('/board/write', BoardController.createBoard)
 /* 게시글 수정 */
-router.patch('/update', BoardController.updateBoard)
+router.patch('/board/update/:board_uid', BoardController.updateBoard)
 /* 게시글 수정 페이지 */
-router.get('/:board_uid', BoardController.patchBoard)
+router.get('/board/update/:board_uid', BoardController.patchBoard)
 /* 게시글 삭제 */
-router.delete('/delete', BoardController.deleteBoard)
+router.delete('/board/delete/:board_uid', BoardController.deleteBoard)
 
 module.exports = router;

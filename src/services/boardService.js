@@ -5,7 +5,6 @@ const pool = require('../../middleware/pool');
 exports.BoardList = async() => {
     try{
         let list = await pool.query(boardQuery.BoardList);
-        console.log(list);
         return list[0];
     }catch (err){
         console.log(err);
@@ -14,9 +13,10 @@ exports.BoardList = async() => {
 }
 
 // 게시판의 글을 상세보기 가능
-exports.showBoard = async(board_title) =>{
+exports.showBoard = async(board_uid) =>{
     try{
-        let detail = await pool.query(boardQuery.showBoard, [board_title]);
+        let detail = await pool.query(boardQuery.showBoard, [board_uid]);
+        console.log(detail[0])
         return detail[0]
     }catch(err){
         console.log(err);
@@ -36,9 +36,9 @@ exports.insertBoard = async(board_title, board_content, board_writer) => {
 }
 
 // 기존 게시글 수정
-exports.updateBoard = async(board_title,board_content) => {
+exports.updateBoard = async(board_title,board_content, board_writer, board_uid) => {
     try{
-        let update = await pool.query(boardQuery.updateBoard, [board_title, board_content])
+        let update = await pool.query(boardQuery.updateBoard, [board_title, board_content, board_writer, board_uid])
         return update[0]
     }catch{
         console.log(err)
