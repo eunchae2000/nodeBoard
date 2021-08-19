@@ -1,15 +1,47 @@
 <!-- TODO:게시글 상세보기 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href="/stylesheets/style.css">
-    <title><%=board_title%></title>
+    <link rel="shortcut icon" href="#">
+    <title>게시글 상세보기</title>
 </head>
+
 <body>
-    
-    
+    <h1>상세보기</h1>
+    <form action="/board/read/:board_uid" method="POST">
+        <table border="1">
+            <input type="hidden" name="boardNum" value="<%=detail[0].board_uid%>" />
+            <tr>
+                <th>작성자</th>
+                <td>
+                    <%=detail[0].board_writer%>
+                </td>
+            </tr>
+            <tr>
+                <th>제목</th>
+                <td>
+                    <%=detail[0].board_title%>
+                </td>
+            </tr>
+            <tr>
+                <th>내용</th>
+                <td><textarea name="board_content" id="content" cols="150" rows="30"
+                        readonly><%=detail[0].board_content%></textarea></td>
+            </tr>
+        </table>
+    </form>
+    <br>
+    <br>
+    <div style="text-align: center;">
+        <button type="submit" id="detail_button" onclick="location.href='/board/update/<%=detail[0].board_uid%>'" style="margin: center; width: 100px; height: 30px;">수정</button>
+        <button type="menu" id="detail_button" onclick="location.href='/board/list'" style="margin: center; width: 100px; height: 30px;">목록</button>
+        <button type="submit" id="detail_button" onclick="location.href='/board/delete/<%=detail[0].board_uid%>'" style="margin: center; width: 100px; height: 30px;">삭제</button>
+    </div>
 </body>
+
 </html>

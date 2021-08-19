@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href="/stylesheets/style.css">
+    <link rel="shortcut icon" href="#">
     <title>BoardList</title>
 </head>
 
@@ -15,19 +16,21 @@
     <table border="1">
         <tr>
             <td style="width:100px;height:10px;font-size:15px;"">번호</td>
-            <td style="width:600px;height:10px;font-size:15px;"">제목</td>
+            <td style=" width:600px;height:10px;font-size:15px;"">제목</td>
             <td style="width:300px;height:10px;font-size:15px;"">작성자</td>
         </tr>
         <% for(var i=0; i<list.length; i++) { %>
             <tr>
                 <!-- TODO: 제목, 게시글 클릭시 해당 글로 이동 -->
                 <td><%=list[i].board_uid%></td>
-                <td><%=list[i].board_title%></td>
-                <td><%=list[i].board_writer%></td>
-            </tr>
-            <%}%>
+                <td><a href=" /board/read/<%=list[i].board_uid%>"><%=list[i].board_title%></a></td>
+            <td>
+                <%=list[i].board_writer%>
+            </td>
+        </tr>
+        <%}%>
     </table>
-</br>
+    </br>
     <button type="button" class="btnCreate" style="margin-right: 2%; float: right;" onclick="location.href='/board/write'">글 작성하기</button>
 </body>
 

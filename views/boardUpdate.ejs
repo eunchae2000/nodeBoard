@@ -4,9 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href="/stylesheets/style.css">
+    <link rel="shortcut icon" href="#">
     <title>Board Update</title>
 </head>
 <body>
-    
+    <h1>수정 페이지</h1>
+    <form action="/board/update/:board_uid" method="POST">
+        <table border="1">
+            <input type="hidden" name="board_uid" value="<%=detail[0].board_uid%>"/>
+            <tr>
+                <th >작성자</th>
+                <td ><input width="500" style="width: 1000px;" type="text" name="board_writer" value="<%=detail[0].board_writer%>"/></td>
+            </tr>
+            <tr>
+                <th>제목</th>
+                <td ><input type="text" style="width: 1000px;" name="board_title"  value="<%=detail[0].board_title%>"/></td>
+            </tr>
+            <tr>
+                <th width="200">내용</th>
+                <td><textarea name="board_content" id="content" cols="150" rows="30"><%=detail[0].board_content%></textarea></td>
+            </tr>
+        </table>
+    </form>
+    <br>
+        <button type="submit" style="float: right; width: 100px; height: 30px;" onclick="location.href='/board/list'">완료</button>
 </body>
 </html>
